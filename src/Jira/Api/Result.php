@@ -25,6 +25,7 @@
 namespace chobie\Jira\Api;
 
 
+use chobie\Jira\Comment;
 use chobie\Jira\Issue;
 
 class Result
@@ -130,6 +131,21 @@ class Result
 
 		return array();
 	}
+
+    /**
+     * Returns comments.
+     * 
+     * @return Comment[]
+     */
+    public function getComments()
+    {
+        if (!isset($this->result['comments'])) {
+            return array();
+        }
+        return array_map(function (array $comment) {
+            return new Comment($comment);
+        }, (array)$this->result['comments']);
+    }
 
 	/**
 	 * Returns raw result.
