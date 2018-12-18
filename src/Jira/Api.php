@@ -698,7 +698,7 @@ class Api
 		array $application = null
 	) {
 		$options = array(
-						'globalid' => $global_id,
+						'globalId' => $global_id,
 						'relationship' => $relationship,
 						'object' => $object,
 					);
