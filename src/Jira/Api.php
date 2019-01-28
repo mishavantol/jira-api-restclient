@@ -558,17 +558,18 @@ class Api
 		return $this->api(self::REQUEST_POST, '/rest/api/2/issue/', array('fields' => $default));
 	}
 
-	/**
-	 * Query issues.
-	 *
-	 * @param string  $jql         JQL.
-	 * @param integer $start_at    Start at.
-	 * @param integer $max_results Max results.
-	 * @param string  $fields      Fields.
-	 *
-	 * @return Result|false
-	 */
-	public function search($jql, $start_at = 0, $max_results = 20, $fields = '*navigable')
+    /**
+     * Query issues.
+     *
+     * @param string $jql JQL.
+     * @param integer $start_at Start at.
+     * @param integer $max_results Max results.
+     * @param string $fields Fields.
+     * @param string $expand
+     *
+     * @return Result|false
+     */
+	public function search($jql, $start_at = 0, $max_results = 20, $fields = '*navigable', $expand = '')
 	{
 		$result = $this->api(
 			self::REQUEST_GET,
@@ -578,6 +579,7 @@ class Api
 				'startAt' => $start_at,
 				'maxResults' => $max_results,
 				'fields' => $fields,
+                'expand' => $expand,
 			)
 		);
 
